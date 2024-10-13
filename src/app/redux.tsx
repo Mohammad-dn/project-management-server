@@ -6,7 +6,7 @@ import {
   useSelector,
   Provider,
 } from "react-redux";
-import globalReducer from "@/state";
+import globalReducer from "@/src/state";
 import { api } from "@/state/api";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
