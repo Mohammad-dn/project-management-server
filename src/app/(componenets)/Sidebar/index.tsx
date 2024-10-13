@@ -1,12 +1,8 @@
 "use client";
 import { LockIcon } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
 
 const Sidebar = () => {
-  const [showProjects, setShowProjects] = useState(true);
-  const [showPriority, setShowPriority] = useState(true);
-
   const sidebarClassNames = `fixed flex flex-col h-[100%] justify-between shadow-xl transition-all duration-300 h-full z-40 dark:bg-black overflow-y-auto bg-white w-64 `;
 
   return (
@@ -19,7 +15,7 @@ const Sidebar = () => {
           </div>
         </div>
         {/* Team */}
-        <div className="flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4 dark:border-gray-700">
+        <div className="da rk:border-gray-700 flex items-center gap-5 border-y-[1.5px] border-gray-200 px-8 py-4">
           <Image src="/logo.png" alt="logo" width={40} height={40} />
           <div>
             <h3 className="text-md font-bold tracking-widest dark:text-gray-200">
