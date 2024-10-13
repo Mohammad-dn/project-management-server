@@ -1,13 +1,18 @@
 "use client";
 import {
+  AlertCircle,
+  AlertOctagon,
+  AlertTriangle,
   Briefcase,
   ChevronDown,
   ChevronUp,
   Home,
+  Layers,
   LockIcon,
   LucideIcon,
   Search,
   Settings,
+  ShieldAlert,
   User,
   Users,
   X,
@@ -21,6 +26,7 @@ import { useState } from "react";
 
 const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
+  const [showPriority, setShowPriority] = useState(true);
   const dispatch = useAppDispatch();
 
   const isSideBarCollapsed = useAppSelector(
@@ -70,6 +76,7 @@ const Sidebar = () => {
           <SidebarLink icon={User} href="/user" label="Users" />
           <SidebarLink icon={Users} href="/teams" label="Team" />
         </nav>
+        {/* project links */}
         <button
           onClick={() => setShowProjects((prev) => !prev)}
           className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
@@ -81,6 +88,47 @@ const Sidebar = () => {
             <ChevronDown className="h-5 w-5" />
           )}
         </button>
+        {/* Project list */}
+
+        {/* priority links */}
+
+        <button
+          onClick={() => setShowPriority((prev) => !prev)}
+          className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
+        >
+          <span className="">Priority</span>
+          {showPriority ? (
+            <ChevronUp className="h-5 w-5" />
+          ) : (
+            <ChevronDown className="h-5 w-5" />
+          )}
+        </button>
+        {/* priorities list */}
+        {showPriority && (
+          <>
+            <SidebarLink
+              icon={AlertCircle}
+              href="/priority/urgent"
+              label="Urgent"
+            />
+            <SidebarLink
+              icon={ShieldAlert}
+              href="/priority/high"
+              label="High"
+            />
+            <SidebarLink
+              icon={AlertTriangle}
+              href="/priority/medium"
+              label="Medium"
+            />
+            <SidebarLink icon={AlertOctagon} href="/priority/low" label="Low" />
+            <SidebarLink
+              icon={Layers}
+              href="/priority/backlog"
+              label="Backlog"
+            />
+          </>
+        )}
       </div>
     </div>
   );
@@ -103,7 +151,7 @@ const SidebarLink = ({
   return (
     <Link href={href} className="w-full">
       <div
-        className={`relative cursor-pointer items-center gap-3 transition-colors hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-700 ${
+        className={`relative flex cursor-pointer items-center gap-3 transition-colors hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-700 ${
           isActive ? "bg-gray-100 text-white dark:bg-gray-600" : ""
         } justify-start px-8 py-3`}
       >
