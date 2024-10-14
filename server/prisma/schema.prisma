@@ -57,10 +57,10 @@ model ProjectTeam {
 model Task {
   id              Int              @id @default(autoincrement())
   titile          String
-  description     String
-  status          String
-  priority        String
-  tags            String
+  description     String?
+  status          String?
+  priority        String?
+  tags            String?
   startDate       DateTime?
   dueDate         DateTime?
   points          Int?
@@ -68,7 +68,7 @@ model Task {
   authorUserId    Int
   assigneUserId   Int?
   project         project?         @relation(fields: [projectId], references: [id])
-  author          User?            @relation("TaskAuthor", fields: [authorUserId], references: [userId])
+  author          User            @relation("TaskAuthor", fields: [authorUserId], references: [userId])
   assignee        User?            @relation("TaskAssignee", fields: [assigneUserId], references: [userId])
   taskASsignments TaskAssignment[]
   attachments     Attachment[]
