@@ -9,6 +9,8 @@ import morgan from "morgan";
 import projectRoutes from "./routes/projectRoutes";
 import tasksRoute from "./routes/tasksRoute";
 import searchRoutes from "./routes/searchRoutes";
+import usersRoute from "./routes/usersRoute";
+import teamRoutes from "./routes/teamRoutes";
 
 /** CONFIGURATION */
 
@@ -29,6 +31,8 @@ app.get("/", (req, res) => {
 app.use("/projects", projectRoutes);
 app.use("/tasks", tasksRoute);
 app.use("/search", searchRoutes);
+app.use("/users", usersRoute);
+app.use("/teams", teamRoutes);
 
 const port = Number(process.env.PORT) || 3000;
 app.listen(port, "0.0.0.0", () => {
