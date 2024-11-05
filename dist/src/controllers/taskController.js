@@ -86,8 +86,8 @@ const getUserTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 ],
             },
             include: {
-                assignee: true,
                 author: true,
+                assignee: true,
             },
         });
         res.json(tasks);
@@ -95,7 +95,7 @@ const getUserTasks = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     catch (error) {
         res
             .status(500)
-            .json({ message: `Error retriving users Task ${error.message}` });
+            .json({ message: `Error retrieving user's tasks: ${error.message}` });
     }
 });
 exports.getUserTasks = getUserTasks;
